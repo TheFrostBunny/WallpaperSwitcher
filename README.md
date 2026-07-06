@@ -12,7 +12,7 @@ A simple PowerShell script that changes your desktop wallpaper.
 
 1. Put the script here:
 
-C:\Backgrounds\wallpaper.ps1
+C:\Backgrounds\toggle.ps1
 
 2. Put your wallpaper images in the same folder.
 
