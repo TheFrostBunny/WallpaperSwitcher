@@ -1,21 +1,25 @@
-$file = "C:\Bakgrunner\state.txt"
+$file = "C:\Backgrounds\state.txt"
 
-$bilder = @(
-    "C:\Bakgrunner\2025-11-23_00.49.50.png",
-    "C:\Bakgrunner\bilde.jpg"
+$wallpapers = @(
+    "C:\Backgrounds\2025-11-23_00.49.50.png",
+    "C:\Backgrounds\image.jpg"
 )
 
+# Read current wallpaper state
 if (Test-Path $file) {
-    $i = Get-Content $file
+    $index = Get-Content $file
 } else {
-    $i = 0
+    $index = 0
 }
 
-$i = [int]$i
-$i = ($i + 1) % 2
+# Switch to next wallpaper
+$index = [int]$index
+$index = ($index + 1) % $wallpapers.Count
 
-Set-Content $file $i
+# Save current state
+Set-Content $file $index
 
+# Load Windows API for changing wallpaper
 Add-Type @'
 using System.Runtime.InteropServices;
 
@@ -25,4 +29,5 @@ public class Wallpaper {
 }
 '@
 
-[Wallpaper]::SystemParametersInfo(20, 0, $bilder[$i], 3)
+# Set desktop wallpaper
+[Wallpaper]::SystemParametersInfo(20, 0, $wallpapers[$index], 3)
