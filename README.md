@@ -1,4 +1,4 @@
-# Wallpaper Switcher
+# Windows Wallpaper Switcher
 
 A lightweight PowerShell script for changing your Windows desktop wallpaper. It can either rotate wallpapers sequentially or choose one at random each time it runs.
 
